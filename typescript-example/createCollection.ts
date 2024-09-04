@@ -6,6 +6,8 @@ import { createCollection } from '@metaplex-foundation/mpl-core'
 import wallet from "../wallet.json";
 
 // Setup Umi
+// DGKrNXqa5H7rPYhuqsvusap1gsXeXniCb7pSp65xqDTj
+//collection id :  5pZ845wWRsZB8SDJHEpoesYRiHsDAY2mNaoMJhrSNF5M
 const umi = createUmi("https://api.devnet.solana.com", "finalized");
 
 let keypair = umi.eddsa.createKeypairFromSecretKey(new Uint8Array(wallet));

@@ -3,19 +3,28 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "createCollection": "ts-node typescript-example/createCollection.ts",
-    "addAsset": "ts-node typescript-example/addAsset.ts"
+    "addAsset": "ts-node typescript-example/addAsset.ts",
+    "h": "ts-node typescript-example/handlepurchase.ts",
+    "m": "node typescript-example/listnft.js"
   },
   "dependencies": {
+    "@metaplex-foundation/js": "^0.20.1",
+    "@metaplex-foundation/mpl-auction-house": "^2.5.1",
     "@metaplex-foundation/mpl-core": "^1.0.2",
+    "@metaplex-foundation/mpl-inscription": "^0.8.1",
+    "@metaplex-foundation/mpl-token-metadata": "^3.2.1",
     "@metaplex-foundation/umi": "^0.9.2",
     "@metaplex-foundation/umi-bundle-defaults": "^0.9.2",
-    "@solana/web3.js": "^1.95.1",
+    "@solana/spl-token": "^0.4.8",
+    "@solana/web3.js": "^1.95.3",
     "@types/node": "^20.14.12",
     "bs58": "^6.0.0",
     "typescript": "^5.5.4"
   },
+  "resolutions": {},
   "devDependencies": {
     "ts-node": "^10.9.2"
   }
