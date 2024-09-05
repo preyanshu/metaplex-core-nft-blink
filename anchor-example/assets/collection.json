@@ -1,14 +1,6 @@
 {
   "name": "Achievements Collection",
   "symbol": "ACH",
-  "uri": "https://example.com/collection-metadata.json"
-  "creators": [
-    {
-      "address": "CreatorWalletPublicKey",
-      "share": 100
-    }
-  ],
-  "image": "https://example.com/images/collection-banner.png",
-  "description": "A collection of NFTs representing various achievements.",
-  "external_url": "https://example.com"
+  "image": "https://res.cloudinary.com/dbo7hzofg/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1725465197/dscvrpoints_achievments_twtrxq.jpg",
+  "description": "The Achievements Collection celebrates various milestones and accomplishments with unique NFTs. Each token represents a significant achievement, such as hitting high DSCR points."
 }
