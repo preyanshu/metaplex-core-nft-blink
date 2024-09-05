@@ -1,0 +1,14 @@
+{
+  "name": "Achievements Collection",
+  "symbol": "ACH",
+  "uri": "https://example.com/collection-metadata.json"
+  "creators": [
+    {
+      "address": "CreatorWalletPublicKey",
+      "share": 100
+    }
+  ],
+  "image": "https://example.com/images/collection-banner.png",
+  "description": "A collection of NFTs representing various achievements.",
+  "external_url": "https://example.com"
+}
