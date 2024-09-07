@@ -5,6 +5,7 @@ import { Keypair, clusterApiUrl, Connection } from "@solana/web3.js";
 import { MPL_CORE_PROGRAM_ID } from "@metaplex-foundation/mpl-core";
 import * as borsh from "@coral-xyz/borsh"
 // import { publicKey } from "@metaplex-foundation/umi";
+import { PublicKey } from "@solana/web3.js";
 
 
 
@@ -28,15 +29,16 @@ describe("metaplex-core-nft", () => {
 
   const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
 
-  const collection = Keypair.generate();
+  // const collection = Keypair.generate();
+  const collection = {publicKey:new PublicKey("7K65n84FyNT9kWASGiLXR1F8mpkVFmFwrN7Xy5FFhu1h")};
   const asset = Keypair.generate();
-  // const database = {publicKey:new PublicKey("A4rscct59mC2mDuYVBEoSLv8T8WTcjPkLUFRdXVJDMQA")}; 
+  // const database = {publicKey:new PublicKey("FfYgLFMz7J1jjui9nNJ1sBLRctCBgN4R99Y4ZisSt3jW")}; 
   const database = Keypair.generate(); 
   // Account for storing the Database
 
   const userData = {
-    follower_count: new anchor.BN(50),
-    dscvr_points: new anchor.BN(5033001091),
+    follower_count: new anchor.BN(1),
+    dscvr_points: new anchor.BN(650000),
     streak: {
       day_count: new anchor.BN(3),
       multiplier_count: new anchor.BN(6)
@@ -82,39 +84,40 @@ describe("metaplex-core-nft", () => {
     await fetchAndLogDatabaseAccount(); // Log data after initialization
   });
 
-  it("Create Collection!", async () => {
-    const tx = await program.methods
-      .createCollection()
-      .accounts({
-        signer: wallet.publicKey,
-        payer: wallet.publicKey,
-        collection: collection.publicKey,
-        systemProgram: anchor.web3.SystemProgram.programId,
-      })
-      .signers([wallet.payer, collection])
-      .rpc();
+  // it("Create Collection!", async () => {
+  //   const tx = await program.methods
+  //     .createCollection()
+  //     .accounts({
+  //       signer: wallet.publicKey,
+  //       payer: wallet.publicKey,
+  //       collection: collection.publicKey,
+  //       systemProgram: anchor.web3.SystemProgram.programId,
+  //     })
+  //     .signers([wallet.payer, collection])
+  //     .rpc();
 
-    console.log("Create Collection Transaction:", tx);
-  });
+  //   console.log("Create Collection ", collection.publicKey.toString());
+
+  //   console.log("Create Collection Transaction:", tx);
+  // });
 
   it("Create Asset Based on Achievement!", async () => {
     console.log("Creating Asset based on Achievement data:", userData);
     // await fetchAndLogDatabaseAccount(); // Log data before creating the asset
     const tx = await program.methods
       .createAsset(
-        "follower_count_50",
+        "streak_days_3",
         userData.follower_count,
         userData.dscvr_points,
-        userData.streak.day_count
+        userData.streak.day_count,
+        "test_user",
       )
       .accounts({
         signer: wallet.publicKey,
         payer: wallet.publicKey,
-        collection: collection.publicKey,
         asset: asset.publicKey,
         database: database.publicKey,
-        mplCoreProgram: MPL_CORE_PROGRAM_ID,
-        systemProgram: anchor.web3.SystemProgram.programId,
+  
       })
       .signers([wallet.payer, asset])
       .rpc();

@@ -23,16 +23,17 @@ umi.use(signerIdentity(adminSigner));
     console.log("Collection:", collection);
 
     // Define the recipient's public key
-    const recipientPublicKey = publicKey("BNvUw1bdLGkSovk8D7E32DsY3UW7czsRoPUSRMNPH2hX"); // Replace with the recipient's public key
+    const recipientPublicKey = publicKey("5saL1sE63dAL9RY3kcRaY9eY6SZeuCzNZqaZFsw6oYsp"); // Replace with the recipient's public key
 
     // Mint and Transfer the new NFT Asset
     try {
         const tx = await create(umi, {
             asset,
-            collection,
             name: "My Asset",
-            uri: "https://example.com",
+            uri: "https://raw.githubusercontent.com/preyanshu/metaplex-core-nft-blink/main/anchor-example/assets/discoverydynamo.json",
+            owner: recipientPublicKey,
         }).sendAndConfirm(umi);
+
 
         // Log the mint address explicitly
         console.log("Mint Address Used for New NFT Minting:", asset.publicKey.toString());
